@@ -1,0 +1,52 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Ghotic';
+}
+
+header {
+    background-color: rgb(142, 0, 0);
+}
+
+.navbar {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 75px;
+
+    li {
+        font-family: "Ghotic";
+        color: white;
+        font-size: xx-large;
+    }
+
+    a {
+        text-decoration: none;
+        color: white;
+        font-size: xx-large;
+    }
+}
+
+.logo_pizzeria {
+    width: 7vw;
+}
+
+@media screen and (max-width: 768px) {
+    .navbar { 
+        gap: 20px;
+        height: 10vh;
+    }
+
+    .logo_pizzeria{
+        width: 10vw;
+    }
+
+    .navbar li {
+        font-size: large;
+    }
+ 
+   .dropdown_title {
+    font-size: large;
+   }
+}

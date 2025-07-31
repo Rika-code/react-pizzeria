@@ -1,0 +1,9 @@
+@font-face {
+    font-family: "Fjalla";
+    src: url('../assets/font/Fjalla.ttf')format("truetype");
+}
+
+@font-face {
+    font-family:"Ghotic";
+    src: url('../assets/font/Ghotic.ttf') format("truetype");
+}

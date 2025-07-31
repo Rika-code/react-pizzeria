@@ -1,0 +1,35 @@
+.compta {
+    color: white ;
+    text-align: center;
+}
+
+.tableau {
+    margin: auto;
+    width: 90%;
+    max-width: 900px;
+    border-collapse: collapse;
+    font-family: "Ghotic";
+    margin-top: 20px;
+
+    th, td {
+        padding: 12px 20px;
+        border: 1px solid #ddd;
+        text-align: center;
+    }
+
+    th {
+        background-color: beige;
+        color: #8E0000;
+        font-family: "Ghotic";
+    }
+
+    tbody {
+        background-color: beige;
+    }
+}
+
+.highlights {
+    background-color: #8E0000;
+    color: white;
+    font-weight: bold;
+}
