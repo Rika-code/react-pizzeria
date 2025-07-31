@@ -6,7 +6,7 @@ const Quotas = () => {
     const [ventes, setVentes] = useState([])
 
     useEffect(() => {
-        fetch("https://flask-pizzeria.onrender.com/ventes")
+        fetch("https://flask-render-production.up.railway.app/ventes")
         .then((res) => res.json())
         .then((data) => {
         

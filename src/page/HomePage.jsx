@@ -16,7 +16,7 @@ const HomePage = () => {
     const [vendeursRetard, setVendeursRetard] = useState([])
 
     useEffect(() => {
-        fetch('https://flask-pizzeria.onrender.com/api/coffres')
+        fetch('https://flask-render-production.up.railway.app/api/coffres')
             .then((res) => res.json())
             .then((coffres) => {
                 setData(coffres);
@@ -38,7 +38,7 @@ const HomePage = () => {
             })
             .catch((err) => console.error("Erreur lors du fetch", err));
 
-            fetch("https://flask-pizzeria.onrender.com/api/ventes")
+            fetch("https://flask-render-production.up.railway.app/api/ventes")
                 .then(res => res.json())
                 .then(data => {
                     const resume = {};

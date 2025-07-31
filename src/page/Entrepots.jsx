@@ -9,7 +9,7 @@ const Entrepots = () => {
     const [depots, setDepots] = useState([])
 
     useEffect(() => {
-        fetch("https://flask-pizzeria.onrender.com/api/coffres")
+        fetch("https://flask-render-production.up.railway.app/api/coffres")
         .then((res) => res.json())
         .then((coffres) => setData(coffres))
         .catch((err) => console.error("Erreur lors du fetch", err))
@@ -18,7 +18,7 @@ const Entrepots = () => {
     const entrepotsAvailables = Object.keys(data);
 
     useEffect(() => {
-      fetch("https://flask-pizzeria.onrender.com/api/depots")
+      fetch("https://flask-render-production.up.railway.app/api/depots")
       .then((res) => res.json())
       .then((data) => setDepots(data))
       .catch((err) => console.error("Erreur lors du fetch des dépôts", err))

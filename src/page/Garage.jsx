@@ -4,7 +4,7 @@ function Garage () {
   const [data, setData] = useState({});
 
   useEffect(() => {
-    fetch("https://flask-pizzeria.onrender.com/api/coffres")
+    fetch("https://flask-render-production.up.railway.app/api/coffres")
       .then((res) => res.json())
       .then((coffres) => setData(coffres))
       .catch((err) => console.error("Erreur lors du fetch:", err));
