@@ -71,6 +71,7 @@ const handleDelete = async (entrepot, produit) => {
               <th>Quantité</th>
               <th>Dernière MAJ</th>
               <th>Statut</th>
+              <th> Supprimer ?</th>
             </tr>
           </thead>
           <tbody>
