@@ -6,7 +6,7 @@ import '../css/style.css';
 const Entrepots = () => {
     const [data, setData] = useState({});
     const [entrepotSelected, setEntrepotSelected] = useState(null);
-    const [depots, setDepots] = useState([])
+    
 
     useEffect(() => {
         fetch("https://flask-render-production.up.railway.app/api/coffres")
@@ -15,6 +15,33 @@ const Entrepots = () => {
         .catch((err) => console.error("Erreur lors du fetch", err))
     }, []);
 
+const handleDelete = async (entrepot, produit) => {
+  try {
+    const response = await fetch(`https://flask-render-production.up.railway.app/api/coffres/${entrepot}/${encodeURIComponent(produit)}`, {
+      method: 'DELETE',
+    });
+    if (response.ok) {
+      // Mise à jour locale du state pour retirer le produit
+      setData(prevData => {
+        const newData = { ...prevData };
+        if (newData[entrepot]) {
+          delete newData[entrepot][produit];
+          // Si l'entrepot est vide, on peut aussi le supprimer (optionnel)
+          if (Object.keys(newData[entrepot]).length === 0) {
+            delete newData[entrepot];
+          }
+        }
+        return newData;
+      });
+      console.log("Produit supprimé !");
+    } else {
+      const errData = await response.json();
+      console.error("Erreur serveur :", errData.error || "Erreur inconnue");
+    }
+  } catch (err) {
+    console.error("Erreur lors de la requête DELETE", err);
+  }
+};
     const entrepotsAvailables = Object.keys(data);
 
 
@@ -62,6 +89,18 @@ const Entrepots = () => {
                         quantite >= 100 ? 'Faible Stock⚠️' :
                         'Rupture🚫'
                     }
+                </td>
+                 <td>
+                   <button
+                          onClick={() => {
+                            if (window.confirm(`Confirmer la suppression de "${item}" ?`)) {
+                              handleDelete(entrepotSelected, item);
+                            }
+                          }}
+                        >
+                          Supprimer
+                        </button>
+
                 </td>
               </tr>
             ))}

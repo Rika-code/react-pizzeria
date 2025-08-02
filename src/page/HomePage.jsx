@@ -112,10 +112,6 @@ const HomePage = () => {
                     )}
                 </ul>
             </div>
-            <div className="activity">
-                <p> Activité récente</p>
-                {/*Add code for activity */}
-            </div>
             </section>
        </section>
        </body>

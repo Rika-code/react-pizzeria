@@ -24,6 +24,15 @@ const Quotas = () => {
     .catch((err) => console.error("Error lors du fetch", err));
     },[]);
 
+     const calculerPrime = (quantite) => {
+    if (quantite >= 10000) return "90 000 $";
+    if (quantite >= 8000) return "80 000 $";
+    if (quantite >= 6000) return "70 000 $";
+    if (quantite >= 4500) return "60 000 $";
+    if (quantite >= 4000) return "50 000 $";
+    return "-";
+  };
+
     return (
         <>
         <Header/>
@@ -34,15 +43,15 @@ const Quotas = () => {
           <tr>
             <th className="runner">Runner</th>
             <th className="pizzas">Pizzas vendues</th>
-            <th className ="total"> Total </th>
+            <th className="prime">Prime</th>
           </tr>
         </thead>
         <tbody>
           {Object.entries(ventes).map(([vendeur, quantite]) => (
             <tr key={vendeur} className={quantite >= 4000 ? 'highlight' : ""}>
               <td className="seller">{vendeur}</td>
-              <td className="quantity">{quantite}</td>
               <td>{quantite} {quantite >= 4000 && "✅"}</td>
+              <td>{calculerPrime(quantite)}</td>
              </tr>
           ))}
         </tbody>
