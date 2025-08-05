@@ -4,6 +4,34 @@ import './Quotas.scss'
 
 const Quotas = () => {  
     const [ventes, setVentes] = useState([])
+    const [resetMessage, setResetMessage] = useState("")
+    const [password, setPassword] = useState("")
+
+const handleReset = async () => {
+  const userPassword = prompt("Entrez le mot de passe pour réinitialiser les ventes :");
+  if (!userPassword) return;
+
+  try {
+    const res = await fetch("https://flask-render-production.up.railway.app/api/ventes/reset", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ password: userPassword }),
+    });
+
+    if (res.ok) {
+      setResetMessage("✅ Ventes réinitialisées avec succès.");
+      setVentes({}); // Vide l'affichage
+    } else {
+      const err = await res.json();
+      setResetMessage("❌ Erreur : " + (err.erreur || "Échec de la réinitialisation"));
+    }
+  } catch (error) {
+    setResetMessage("❌ Erreur réseau.");
+    console.error("Erreur reset :", error);
+  }
+};
 
     useEffect(() => {
         fetch("https://flask-render-production.up.railway.app/api/ventes")
@@ -38,6 +66,10 @@ const Quotas = () => {
         <Header/>
           <div className="p-4">
       <h1 className="compta">Comptabilité Runner</h1>
+      <div style={{ marginBottom: "20px"}} className='reset'>
+      <button onClick={handleReset}>🔁 Reset</button>
+      {resetMessage && <p>{resetMessage}</p>}
+      </div>
       <table className="tableau">
         <thead>
           <tr>

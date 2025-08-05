@@ -42,6 +42,8 @@ const handleDelete = async (entrepot, produit) => {
     console.error("Erreur lors de la requête DELETE", err);
   }
 };
+
+
     const entrepotsAvailables = Object.keys(data);
 
 

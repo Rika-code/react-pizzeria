@@ -33,3 +33,16 @@
     color: white;
     font-weight: bold;
 }
+
+.reset {
+    display: flex;
+    justify-content: center;
+    button {
+        background-color: beige;
+        border: 1px solid #8E0000;
+        border-radius: 5px;
+        padding: 7px;
+        font-weight: bold;
+        margin-top: 20px;
+    }
+}
